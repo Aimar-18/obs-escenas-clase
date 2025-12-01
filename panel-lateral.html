@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Redes Sociales</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent; /* Para OBS */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .social-panel {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: rgba(20, 20, 20, 0.8); /* Fondo oscuro transparente */
+      padding: 15px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: -2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .social-panel a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .social-panel a:hover {
+      transform: scale(1.2); /* Hover centrado */
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .social-panel img {
+      width: 32px;
+      height: 32px;
+      filter: invert(1); /* Hace que los íconos negros se vean blancos */
+    }
+
+    .username {
+      margin-top: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="social-panel">
+    <a href="https://github.com/aimar_18" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
+      <div class="username">aimar_18</div>
+    </a>
+    <a href="https://www.youtube.com/@aimar_18" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube">
+      <div class="username">aimar_18</div>
+    </a>
+    <a href="https://www.instagram.com/aimar_18" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">
+      <div class="username">aimar_18</div>
+    </a>
+  </div>
+</body>
+</html>

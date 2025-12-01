@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Likes Overlay Interactivo</title>
+<style>
+  :root{
+    --size: 64px;
+    --font-size: 36px;
+    --bg-blur: 6px;
+    --bg-opacity: 0.15;
+    --accent: 255,80,95;
+    --text-color: 255,255,255;
+    --padding: 10px 14px;
+    --radius: 12px;
+    --gap: 12px;
+  }
+
+  html,body{
+    height:100%;
+    margin:0;
+    background: transparent;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .controls-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .likes-box{
+    display:inline-flex;
+    align-items:center;
+    gap: var(--gap);
+    padding: var(--padding);
+    border-radius: var(--radius);
+    backdrop-filter: blur(var(--bg-blur));
+    -webkit-backdrop-filter: blur(var(--bg-blur));
+    background: rgba(var(--text-color), var(--bg-opacity));
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    min-width: 120px;
+  }
+
+  .icon-wrap{
+    width: var(--size);
+    height: var(--size);
+    min-width: var(--size);
+    min-height: var(--size);
+    border-radius: 999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg, rgba(var(--accent),0.95), rgba(var(--accent),0.75));
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+
+  .icon-wrap svg{
+    width: calc(var(--size) * 0.6);
+    height: calc(var(--size) * 0.6);
+    display:block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  }
+
+  .likes-count{
+    color: rgb(var(--text-color));
+    font-weight: 700;
+    font-size: var(--font-size);
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+    white-space: nowrap;
+    min-width: 2ch;
+  }
+
+  @media (max-width: 360px){
+    :root{
+      --size: 52px;
+      --font-size: 28px;
+    }
+  }
+
+  .pulse {
+    animation: pulse 420ms ease;
+  }
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.12); }
+    100% { transform: scale(1); }
+  }
+
+  .control-btn {
+    background: rgba(var(--text-color), 0.1);
+    border: none;
+    color: rgb(var(--text-color));
+    padding: 10px 20px;
+    font-size: 24px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    backdrop-filter: blur(var(--bg-blur));
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: background 0.2s;
+  }
+
+  .control-btn:hover {
+    background: rgba(var(--text-color), 0.3);
+  }
+
+  .control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+  <div class="controls-box">
+    <button class="control-btn" onclick="updateLikes(-1)" id="decrementBtn">−</button>
+
+    <div class="likes-box" id="likesBox" aria-live="polite" role="status">
+      <div class="icon-wrap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 20s-7.333-5.197-9.2-7.06C-0.2 8.954 3.6 4.5 8.4 6.6 10.2 7.36 12 9 12 9s1.8-1.64 3.6-2.4C20.4 4.5 24.2 8.955 21.2 12.94 19.333 14.803 12 20 12 20z"
+                fill="white" opacity="0.95"/>
+        </svg>
+      </div>
+      <div class="likes-count" id="likesCount">0</div>
+    </div>
+
+    <button class="control-btn" onclick="updateLikes(1)">+</button>
+  </div>
+
+<script>
+(function(){
+  const elCount = document.getElementById('likesCount');
+  const elDecrementBtn = document.getElementById('decrementBtn');
+  let currentLikes = 0;
+
+  function setLikes(n){
+    const prev = parseInt(elCount.textContent) || 0;
+    if (prev === n) return;
+    currentLikes = n;
+    elCount.textContent = n.toLocaleString();
+
+    elCount.classList.remove('pulse');
+    void elCount.offsetWidth;
+    elCount.classList.add('pulse');
+
+    elDecrementBtn.disabled = currentLikes <= 0;
+  }
+
+  window.updateLikes = function(change) {
+    const newLikes = currentLikes + change;
+    if (newLikes >= 0) {
+      setLikes(newLikes);
+    }
+  };
+
+  setLikes(0);
+})();
+</script>
+</body>
+</html>

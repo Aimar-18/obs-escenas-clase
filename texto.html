@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto Marquee</title>
+    <style>
+        /* Contenedor Fijo */
+        .contenedor-fijo {
+            /* Dimensiones y apariencia del 'box' */
+            width: 300px; /* El ancho visible del área de movimiento */
+            height: 50px;
+            background-color: #2ecc71; /* Nuevo color de fondo */
+            color: white;
+            font-size: 1.2em;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 50px auto; /* Centrar para mejor visualización */
+
+            /* Clave: Oculta lo que se sale del contenedor */
+            overflow: hidden; 
+
+            /* Asegura que el texto comience en la posición correcta */
+            position: relative;
+        }
+
+        /* Texto Móvil */
+        .texto-movil {
+            /* Debe estar en una sola línea y sin saltos */
+            white-space: nowrap; 
+
+            /* Aplica la animación */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* Centra verticalmente */
+            
+            /* Nombre, duración, tipo, repetición */
+            animation: marquee-izq 5s linear infinite; 
+        }
+
+        /* Definición de la animación Marquee */
+        @keyframes marquee-izq {
+            0% {
+                /* Empieza a la derecha del contenedor */
+                left: 100%; 
+            }
+            100% {
+                /* Se mueve a la izquierda, desplazando el texto completo fuera de la vista */
+                left: -100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-fijo">
+        <span class="texto-movil">ejercicio obs holaaaa</span>
+    </div>
+
+</body>
+</html>

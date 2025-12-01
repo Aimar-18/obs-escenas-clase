@@ -602,7 +602,7 @@
             "id": "image_source",
             "versioned_id": "image_source",
             "settings": {
-                "file": "C:/Users/2SMD-23/Downloads/360_F_1178840878_zk0FZgb5vQ3nCnVHx5ixZphWVpZwKDsA.jpg"
+                "file": "fondo.jpg"
             },
             "mixers": 0,
             "sync": 0,
@@ -629,7 +629,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "C:/Users/2SMD-23/Desktop/Programazioa/likes.html"
+                "local_file": "likes.html"
             },
             "mixers": 255,
             "sync": 0,
@@ -662,7 +662,7 @@
             "versioned_id": "browser_source",
             "settings": {
                 "is_local_file": true,
-                "local_file": "C:/Users/2SMD-23/Desktop/Programazioa/texto.html"
+                "local_file": "texto.html"
             },
             "mixers": 255,
             "sync": 0,
@@ -694,7 +694,7 @@
             "id": "image_source",
             "versioned_id": "image_source",
             "settings": {
-                "file": "C:/Users/2SMD-23/Downloads/192531325.png"
+                "file": "192531325.png"
             },
             "mixers": 0,
             "sync": 0,
@@ -720,7 +720,7 @@
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
-                "url": "C:\\Users\\2SMD-23\\Desktop\\Programazioa\\panel-lateral.html"
+                "url": "panel-lateral.html"
             },
             "mixers": 255,
             "sync": 0,
